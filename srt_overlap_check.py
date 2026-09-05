@@ -50,6 +50,9 @@ def scan_bytes(data):
     for block in blocks:
         if len(block) < 3:
             raise InvalidSRT("malformed_cue")
+        for index in range(2, len(block) - 1):
+            if re.fullmatch(r"[ \t]*[0-9]+[ \t]*", block[index]) and re.match(r"[ \t]*[0-9]{1,4}:[^\r\n]*-->", block[index + 1]):
+                raise InvalidSRT("missing_cue_separator")
         cue_id = block[0].strip(" \t")
         if not re.fullmatch(r"[0-9]{1,128}", cue_id):
             raise InvalidSRT("invalid_cue_id")

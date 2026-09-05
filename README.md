@@ -4,9 +4,13 @@ A small, free, read-only command-line scanner for **adjacent cue overlaps in num
 
 Python 3.9 or later; standard library only. No package installation, account or network connection required. This repository's scanner, documentation and original example are MIT-licensed.
 
+**Help:** [Troubleshoot overlapping timestamps](OVERLAP-TROUBLESHOOTING.md) · [Release notes](RELEASE-NOTES.md) · [Input limits](#scope-and-limits)
+
+The troubleshooting guide includes a before/after 1ms example, a free manual workflow and explanations of common rejection codes.
+
 ## Run it
 
-Download this repository, open a terminal in its folder, and run:
+Download the source repository or the free scanner release ZIP, extract it, open a terminal in its folder, and run:
 
 ```sh
 python3 -B srt_overlap_check.py example.srt
@@ -77,8 +81,14 @@ The paid GUI is separate software with its own license; the MIT license here doe
 
 ## Test
 
+Run these tests from the source repository; tests are omitted from the downloadable release ZIP.
+
 ```sh
 python3 -B -m unittest discover -v
 ```
 
-Five tests cover the overlap boundary, UTF-8/BOM/CRLF and literal markup, malformed input, limits, and CLI output/privacy plus unchanged input hashes. Tests create temporary synthetic files and remove them afterward. No customer subtitles or third-party fixtures are included.
+Six tests cover the overlap boundary, UTF-8/BOM/CRLF and literal markup, malformed input, limits, and CLI output/privacy plus unchanged input hashes. Tests create temporary synthetic files and remove them afterward. No customer subtitles or third-party fixtures are included.
+
+### Missing cue separators (v1.0.1)
+
+A numeric line followed by a timestamp-looking arrow line inside cue dialogue is rejected as `missing_cue_separator`. This may mean a blank line between cues is missing. Inspect and correct a copy manually; the tool does not guess where to split it. Literal dialogue that quotes this header pattern is also unsupported. Ordinary multiline dialogue remains supported.

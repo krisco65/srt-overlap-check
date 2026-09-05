@@ -28,6 +28,14 @@ class ScannerTests(unittest.TestCase):
             with self.subTest(code=code), self.assertRaisesRegex(scanner.InvalidSRT, '^'+code+'$'):
                 scanner.scan_bytes(data)
 
+    def test_missing_separator_and_valid_multiline(self):
+        for newline in [b"\n", b"\r\n"]:
+            broken = SAMPLE.replace(b"\n\n", b"\n").replace(b"\n", newline)
+            with self.assertRaisesRegex(scanner.InvalidSRT, "missing_cue_separator"):
+                scanner.scan_bytes(broken)
+        valid = SAMPLE.replace(b"Example A", b"Line one\n123\nOrdinary dialogue\n00:00:02,000 --> 00:00:03,000")
+        self.assertEqual(scanner.scan_bytes(valid), scanner.scan_bytes(SAMPLE))
+
     def test_limits(self):
         with self.assertRaisesRegex(scanner.InvalidSRT, 'file_size_limit'):
             scanner.scan_bytes(b'x'*(scanner.MAX_BYTES+1))
