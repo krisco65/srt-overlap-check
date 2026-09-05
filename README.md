@@ -1,5 +1,7 @@
 # SRT overlap check
 
+**[Download the free scanner ZIP](https://github.com/krisco65/srt-overlap-check/releases/download/v1.0.1/srt-overlap-check-v1.0.1.zip)** · [Checksums and release notes](https://github.com/krisco65/srt-overlap-check/releases/tag/v1.0.1)
+
 A small, free, read-only command-line scanner for **adjacent cue overlaps in numbered UTF-8 SRT files**. It prints cue IDs and the overlap in milliseconds as JSON. It does not print subtitle dialogue or filenames, upload files, repair timings, or overwrite originals.
 
 Python 3.9 or later; standard library only. No package installation, account or network connection required. This repository's scanner, documentation and original example are MIT-licensed.
