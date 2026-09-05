@@ -1,0 +1,52 @@
+[
+  {
+    "fixture": "large-overlap.srt",
+    "exit": 1,
+    "result": {
+      "scope": "adjacent_cues",
+      "files": [
+        {
+          "input": 1,
+          "status": "scanned",
+          "cue_count": 2,
+          "overlaps": [
+            {
+              "cue_id": "1",
+              "next_cue_id": "2",
+              "overlap_ms": 100
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "fixture": "missing-separator.srt",
+    "exit": 2,
+    "result": {
+      "scope": "adjacent_cues",
+      "files": [
+        {
+          "input": 1,
+          "status": "rejected",
+          "error": "missing_cue_separator"
+        }
+      ]
+    }
+  },
+  {
+    "fixture": "no-overlap.srt",
+    "exit": 0,
+    "result": {
+      "scope": "adjacent_cues",
+      "files": [
+        {
+          "input": 1,
+          "status": "scanned",
+          "cue_count": 2,
+          "overlaps": []
+        }
+      ]
+    }
+  }
+]

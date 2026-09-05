@@ -1,0 +1,6 @@
+1
+00:00:01,000 --> 00:00:02,100
+Synthetic first cue
+2
+00:00:02,000 --> 00:00:03,000
+Synthetic second cue

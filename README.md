@@ -94,3 +94,7 @@ Six tests cover the overlap boundary, UTF-8/BOM/CRLF and literal markup, malform
 ### Missing cue separators (v1.0.1)
 
 A numeric line followed by a timestamp-looking arrow line inside cue dialogue is rejected as `missing_cue_separator`. This may mean a blank line between cues is missing. Inspect and correct a copy manually; the tool does not guess where to split it. Literal dialogue that quotes this header pattern is also unsupported. Ordinary multiline dialogue remains supported.
+
+## Final Cut Pro import troubleshooting
+
+[Final Cut Pro SRT overlap errors and partial imports: check them separately](FINAL-CUT-SRT-PARTIAL-IMPORT.md) explains the built-in overlap command, local structural checks and three original examples. A partial import is not proof that an overlap repair will fix missing captions. This scanner does not certify Final Cut compatibility.
